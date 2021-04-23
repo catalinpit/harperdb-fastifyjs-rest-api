@@ -3,11 +3,7 @@ const app = require('fastify')({
 });
 
 require('dotenv').config()
-require('./src/db/db_config');
-
-app.get('/', (req, res) => {
-    res.send({ hello: 'world' });
-});
+app.register(require('./src/routes/course'));
 
 app.listen(process.env.PORT, (err, addr) => {
     if (err) {
