@@ -1,5 +1,6 @@
 ### dotenv ###
 .env
+package-lock.json
 
 ### macOS ###
 # General
