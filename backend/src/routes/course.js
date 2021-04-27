@@ -12,7 +12,7 @@ async function routes(app, opts) {
     // Get a specific course
     app.route({
         method: 'GET',
-        url: '/courses/:name',
+        url: '/courses/:id',
         handler: courseController.getSpecificCourse
     });
 
@@ -26,14 +26,14 @@ async function routes(app, opts) {
     // Edit a course
     app.route({
         method: 'PUT',
-        url: '/courses/:name',
+        url: '/courses/:id',
         handler: courseController.editCourse
     });
 
     // Delete a course
     app.route({
         method: 'DELETE',
-        url: '/courses/:name',
+        url: '/courses/:id',
         handler: courseController.deleteCourse
     });
 }

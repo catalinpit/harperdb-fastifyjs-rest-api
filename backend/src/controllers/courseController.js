@@ -7,7 +7,7 @@ const getCourses = async (req, res) => {
 };
 
 const getSpecificCourse = async (req, res) => {
-    const course = await client.query(`SELECT * FROM mydb.courses WHERE user_id=${req.params.name}`);
+    const course = await client.query(`SELECT * FROM mydb.courses WHERE id="${req.params.id}"`);
 
     res.send({ course });
 };
@@ -44,8 +44,8 @@ const addCourse = async (req, res) => {
 
 const editCourse = async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUptades = ['name', 'description', 'author', 'link'];
-    const isValidOperation = updates.every((update) => allowedUptades.includes(update));
+    const allowedUpdates = ['name', 'description', 'author', 'link'];
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
         res.code(400).send({ error: 'Not a valid operation! '});
@@ -58,7 +58,7 @@ const editCourse = async (req, res) => {
             table: 'courses',
             records: [
                 {
-                    id: req.params.name,
+                    id: req.params.id,
                     name: req.body.name,
                     description: req.body.description,
                     author: req.body.author,
@@ -74,7 +74,7 @@ const editCourse = async (req, res) => {
 };
 
 const deleteCourse = async (req, res) => {
-    const course = await client.query(`DELETE FROM mydb.courses WHERE user_id=${req.params.name}`);
+    const course = await client.query(`DELETE FROM mydb.courses WHERE id="${req.params.id}"`);
 
     res.send({ 
         message: 'Course deleted!',

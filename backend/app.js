@@ -12,4 +12,4 @@ app.listen(process.env.PORT, (err, addr) => {
     }
 
     app.log.info(`Your server is listening on port ${process.env.PORT} 🧨`);
-})
+});
